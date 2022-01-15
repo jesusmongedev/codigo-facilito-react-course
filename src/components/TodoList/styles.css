@@ -1,0 +1,17 @@
+h2 {
+  text-align: center;
+}
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+.todo-list--completed {
+  color: green;
+  text-decoration: line-through;
+}

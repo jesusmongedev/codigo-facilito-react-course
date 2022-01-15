@@ -88,7 +88,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <main>
       {/* We need to conditionally render different inputs based on if we are in editing mode */}
       {isEditing ? (
         <EditTodoForm
@@ -111,7 +111,7 @@ const App = () => {
         setIsEditing={setIsEditing}
         setCurrentTodo={setCurrentTodo}
       />
-    </div>
+    </main>
   );
 };
 
