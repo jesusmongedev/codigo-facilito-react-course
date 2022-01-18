@@ -1,15 +1,23 @@
-h2 {
+.todos-container h2 {
   text-align: center;
 }
 ul {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 1em;
   padding: 0;
 }
-.todo-list {
+.todo-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   list-style: none;
-  padding: 0;
+}
+.todo-list {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.3em;
 }
 .todo-list--completed {
   color: green;

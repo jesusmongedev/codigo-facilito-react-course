@@ -25,31 +25,34 @@ const TodoList = ({ todos, setTodos, setIsEditing, setCurrentTodo }) => {
   // Numero de Todos completados
   const completedTodos = todos.filter((todo) => todo.completed).length;
   return (
-    <div>
+    <div className="todos-container">
       <h2>
         {completedTodos} completed of {todos.length}
       </h2>
       {/* map over the todos array which creates a new li element for every todo */}
-      {todos.map((todo, index) => (
-        <ul key={index}>
-          <li
-            className={`todo-list ${
-              todo.completed ? "todo-list--completed" : ""
-            }`}
-          >
-            <input
-              type="checkbox"
-              onClick={() => handleCompletedTodo(todo.id)}
-              defaultChecked={todo.completed}
-            />{" "}
-            {todo.text}
-          </li>
-          <div className="todo-actions">
-            <span onClick={() => deleteTodo(todo.text)}>❌</span>{" "}
-            <span onClick={() => editTodo(todo)}>🔁</span>
+      <ul>
+        {todos.map((todo, index) => (
+          <div className="todo-text">
+            <li
+              key={index}
+              className={`todo-list ${
+                todo.completed ? "todo-list--completed" : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                onClick={() => handleCompletedTodo(todo.id)}
+                defaultChecked={todo.completed}
+              />
+              {todo.text}
+            </li>
+            <div className="todo-actions">
+              <span onClick={() => deleteTodo(todo.text)}>❌</span>{" "}
+              <span onClick={() => editTodo(todo)}>🔁</span>
+            </div>
           </div>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </div>
   );
 };

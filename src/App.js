@@ -29,6 +29,7 @@ const App = () => {
   const [currentTodo, setCurrentTodo] = useState({});
   //Getting quote and author from our custom Hook useRandomQuote
   const { quote, author } = useRandomQuote();
+
   // useEffect to run once the component mounts
   useEffect(() => {
     // localstorage only support storing strings as keys and values

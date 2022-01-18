@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useRandomQuote = () => {
   //Fetching Quote
@@ -6,13 +6,19 @@ const useRandomQuote = () => {
   const [author, setAuthor] = useState("");
   // Get a Ramdom Quote to render
   useEffect(() => {
+    const getRandomIndex = (min, max) =>
+      Math.floor(Math.random() * (max - min) + min);
+
+    const random = getRandomIndex(0, 1644);
+    console.log(random);
+
     const fetchQuote = async () =>
       await fetch("https://type.fit/api/quotes")
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setQuote(data[0].text);
-          setAuthor(data[0].author);
+          setQuote(data[random].text);
+          setAuthor(data[random].author);
         });
     fetchQuote();
   }, []);

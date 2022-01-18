@@ -21,6 +21,9 @@ html {
  */
 
 body {
+  display: flex;
+  justify-content: center;
+  color: rgb(41, 41, 41);
   margin: 0;
 }
 
@@ -29,6 +32,7 @@ body {
  */
 
 main {
+  max-width: 600px;
   display: block;
 }
 
