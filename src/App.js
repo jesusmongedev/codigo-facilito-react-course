@@ -3,6 +3,7 @@ import AddTodoForm from "./components/AddTodoForm";
 import EditTodoForm from "./components/EditTodoForm";
 import Header from "./components/Header";
 import TodoList from "./components/TodoList/index";
+import useRandomQuote from "./CustomHooks/useRandomQuote";
 
 const App = () => {
   //* Next Step Use TodoContext to provide props to all my components and a custom hook to execute the localStorage logic an index.js and AppUi.js
@@ -26,9 +27,8 @@ const App = () => {
   const [isEditing, setIsEditing] = useState(false);
   // object state to set so we know which todo item we are editing
   const [currentTodo, setCurrentTodo] = useState({});
-  //Fetching Quote
-  const [quote, setQuote] = useState("");
-
+  //Getting quote and author from our custom Hook useRandomQuote
+  const { quote, author } = useRandomQuote();
   // useEffect to run once the component mounts
   useEffect(() => {
     // localstorage only support storing strings as keys and values
@@ -92,7 +92,7 @@ const App = () => {
 
   return (
     <main>
-      <Header />
+      <Header quote={quote} author={author} />
       {/* We need to conditionally render different inputs based on if we are in editing mode */}
       {isEditing ? (
         <EditTodoForm

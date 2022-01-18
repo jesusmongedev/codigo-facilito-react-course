@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const useRandomQuote = (RANDOM_INDEX) => {
+const useRandomQuote = () => {
   //Fetching Quote
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
@@ -11,10 +11,15 @@ const useRandomQuote = (RANDOM_INDEX) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setQuote(data);
+          setQuote(data[0].text);
+          setAuthor(data[0].author);
         });
     fetchQuote();
   }, []);
+  return {
+    quote,
+    author,
+  };
 };
 
 export default useRandomQuote;
