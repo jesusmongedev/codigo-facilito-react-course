@@ -40,7 +40,7 @@ const TodoList = ({ todos, setTodos, setIsEditing, setCurrentTodo }) => {
             <input
               type="checkbox"
               onClick={() => handleCompletedTodo(todo.id)}
-              checked={todo.completed}
+              defaultChecked={todo.completed}
             />{" "}
             {todo.text}
           </li>

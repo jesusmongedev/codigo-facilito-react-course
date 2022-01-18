@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AddTodoForm from "./components/AddTodoForm";
 import EditTodoForm from "./components/EditTodoForm";
+import Header from "./components/Header";
 import TodoList from "./components/TodoList/index";
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
   const [isEditing, setIsEditing] = useState(false);
   // object state to set so we know which todo item we are editing
   const [currentTodo, setCurrentTodo] = useState({});
+  //Fetching Quote
+  const [quote, setQuote] = useState("");
 
   // useEffect to run once the component mounts
   useEffect(() => {
@@ -35,9 +38,6 @@ const App = () => {
     // add the todos as a dependancy because we want to update
     // localstorage anytime the todos state changes
   }, [todos]);
-
-  // Get a Ramdom Quote to render
-  // useEffect(() => {}, [input]);
 
   // function to get the value of the input and set the new state
   const handleChange = (e) => {
@@ -92,6 +92,7 @@ const App = () => {
 
   return (
     <main>
+      <Header />
       {/* We need to conditionally render different inputs based on if we are in editing mode */}
       {isEditing ? (
         <EditTodoForm
