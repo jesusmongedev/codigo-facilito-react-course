@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AddTodoForm from "./components/AddTodoForm";
-import EditTodoForm from "./components/EditTodoForm";
+// import EditTodoForm from "./components/EditTodoForm";
 import Header from "./components/Header";
+import { TodoContext } from "./components/TodoContext";
 import TodoList from "./components/TodoList/index";
-import useRandomQuote from "./CustomHooks/useRandomQuote";
 
 const App = () => {
   //* Next Step Use TodoContext to provide props to all my components and a custom hook to execute the localStorage logic an index.js and AppUi.js
@@ -24,11 +24,12 @@ const App = () => {
   const [inputValue, setInputValue] = useState("");
   // boolean state to know if we are editing (this will let us display
   // different inputs based on a condition (conditional rendering)
-  const [isEditing, setIsEditing] = useState(false);
-  // object state to set so we know which todo item we are editing
-  const [currentTodo, setCurrentTodo] = useState({});
+  // const [isEditing, setIsEditing] = useState(false);
+  // // object state to set so we know which todo item we are editing
+  // const [currentTodo, setCurrentTodo] = useState({});
   //Getting quote and author from our custom Hook useRandomQuote
-  const { quote, author } = useRandomQuote();
+  // const { quote, author } = useRandomQuote();
+  const { quote, author } = useContext(TodoContext);
 
   // useEffect to run once the component mounts
   useEffect(() => {
@@ -65,37 +66,37 @@ const App = () => {
     setInputValue("");
   };
 
-  // function to get the value of the edit input and set the new state
-  const handleEditInputChange = (e) => {
-    setCurrentTodo({ ...currentTodo, text: e.target.value.toUpperCase() });
-    console.log(currentTodo);
-  };
+  // // function to get the value of the edit input and set the new state
+  // const handleEditInputChange = (e) => {
+  //   setCurrentTodo({ ...currentTodo, text: e.target.value.toUpperCase() });
+  //   console.log(currentTodo);
+  // };
 
-  // function to edit a todo item
-  const handleUpdateTodo = (id, updatedTodo) => {
-    // here we are mapping over the todos array - the idea is check if the todo.id matches the id we pass into the function
-    // if the id's match, use the second parameter to pass in the updated todo object
-    // otherwise just use old todo
-    const updatedItem = todos.map((todo) => {
-      return todo.id === id ? updatedTodo : todo;
-    });
-    // set editing to false because this function will be used inside a onSubmit function - which means the data was submited and we are no longer editing
-    setIsEditing(false);
-    // update the todos state with the updated todo
-    setTodos(updatedItem);
-  };
+  // // function to edit a todo item
+  // const handleUpdateTodo = (id, updatedTodo) => {
+  //   // here we are mapping over the todos array - the idea is check if the todo.id matches the id we pass into the function
+  //   // if the id's match, use the second parameter to pass in the updated todo object
+  //   // otherwise just use old todo
+  //   const updatedItem = todos.map((todo) => {
+  //     return todo.id === id ? updatedTodo : todo;
+  //   });
+  //   // set editing to false because this function will be used inside a onSubmit function - which means the data was submited and we are no longer editing
+  //   setIsEditing(false);
+  //   // update the todos state with the updated todo
+  //   setTodos(updatedItem);
+  // };
 
-  const handleEditFormSubmit = (e) => {
-    e.preventDefault();
-    // call the handleUpdateTodo Function - passing the currentTodo.id and the currentTodo object as arguments
-    handleUpdateTodo(currentTodo.id, currentTodo);
-  };
+  // const handleEditFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   // call the handleUpdateTodo Function - passing the currentTodo.id and the currentTodo object as arguments
+  //   handleUpdateTodo(currentTodo.id, currentTodo);
+  // };
 
   return (
-    <main>
+    <div className="todo-container">
       <Header quote={quote} author={author} />
       {/* We need to conditionally render different inputs based on if we are in editing mode */}
-      {isEditing ? (
+      {/* {isEditing ? (
         <EditTodoForm
           currentTodo={currentTodo}
           setIsEditing={setIsEditing}
@@ -108,15 +109,19 @@ const App = () => {
           onAddInputChange={handleChange}
           onAddFormSubmit={handleAddTodo}
         />
-      )}
-
+      )} */}
+      <AddTodoForm
+        todo={inputValue}
+        onAddInputChange={handleChange}
+        onAddFormSubmit={handleAddTodo}
+      />
       <TodoList
         todos={todos}
         setTodos={setTodos}
-        setIsEditing={setIsEditing}
-        setCurrentTodo={setCurrentTodo}
+        // setIsEditing={setIsEditing}
+        // setCurrentTodo={setCurrentTodo}
       />
-    </main>
+    </div>
   );
 };
 

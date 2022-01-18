@@ -13,6 +13,9 @@ ul {
   justify-content: space-between;
   list-style: none;
 }
+.todo-text input {
+  cursor: pointer;
+}
 .todo-list {
   display: flex;
   flex: 1;
@@ -22,4 +25,7 @@ ul {
 .todo-list--completed {
   color: green;
   text-decoration: line-through;
+}
+.todo-actions span {
+  cursor: pointer;
 }

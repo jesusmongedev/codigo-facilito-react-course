@@ -32,8 +32,11 @@ body {
  */
 
 main {
-  max-width: 600px;
   display: block;
+}
+
+.todo-container {
+  max-width: 600px;
 }
 
 /**

@@ -1,7 +1,9 @@
-import React from "react";
 import "./styles.css";
+import { TodoContext } from "../TodoContext";
+import { useContext } from "react";
 
-const Header = ({ quote, author }) => {
+const Header = () => {
+  const { quote, author } = useContext(TodoContext);
   return (
     <header>
       <blockquote>

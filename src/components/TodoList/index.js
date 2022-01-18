@@ -9,11 +9,11 @@ const TodoList = ({ todos, setTodos, setIsEditing, setCurrentTodo }) => {
     newTodos.splice(todoIndex, 1);
     setTodos(newTodos);
   };
-  // handle Edit Todo
-  const editTodo = (todo) => {
-    setIsEditing(true);
-    setCurrentTodo({ ...todo });
-  };
+  // // handle Edit Todo
+  // const editTodo = (todo) => {
+  //   setIsEditing(true);
+  //   setCurrentTodo({ ...todo });
+  // };
   //handle completed todo
   const handleCompletedTodo = (id) => {
     const todoIndex = todos.findIndex((todo) => todo.id === id);
@@ -48,7 +48,7 @@ const TodoList = ({ todos, setTodos, setIsEditing, setCurrentTodo }) => {
             </li>
             <div className="todo-actions">
               <span onClick={() => deleteTodo(todo.text)}>❌</span>{" "}
-              <span onClick={() => editTodo(todo)}>🔁</span>
+              {/* <span onClick={() => editTodo(todo)}>🔁</span> */}
             </div>
           </div>
         ))}
