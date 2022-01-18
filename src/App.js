@@ -36,6 +36,9 @@ const App = () => {
     // localstorage anytime the todos state changes
   }, [todos]);
 
+  // Get a Ramdom Quote to render
+  // useEffect(() => {}, [input]);
+
   // function to get the value of the input and set the new state
   const handleChange = (e) => {
     setInputValue(e.target.value);
