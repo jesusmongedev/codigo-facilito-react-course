@@ -1,40 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 import "./styles.css";
 
-const TodoList = ({ todos, setTodos, setIsEditing, setCurrentTodo }) => {
-  // handle Delete Todo
-  const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
-  };
+const TodoList = () => {
+  const { todos, addTodo, deleteTodo, completedTodos, totalTodos } =
+    useContext(TodoContext);
+  // // handle Delete Todo
+  // const deleteTodo = (text) => {
+  //   const todoIndex = todos.findIndex((todo) => todo.text === text);
+  //   const newTodos = [...todos];
+  //   newTodos.splice(todoIndex, 1);
+  //   setTodos(newTodos);
+  // };
   // // handle Edit Todo
   // const editTodo = (todo) => {
   //   setIsEditing(true);
   //   setCurrentTodo({ ...todo });
   // };
-  //handle completed todo
+  // handle completed todo
   const handleCompletedTodo = (id) => {
     const todoIndex = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
-    // Negando si newTodos[todoIndex].completed = true lo hace falso y si es false lo hace true
-    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
   };
+  //   // Negando si newTodos[todoIndex].completed = true lo hace falso y si es false lo hace true
+  //   newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+  //   setTodos(newTodos);
+  // };
   // Numero de Todos completados
-  const completedTodos = todos.filter((todo) => todo.completed).length;
+  // const completedTodos = todos.filter((todo) => todo.completed).length;
   return (
     <div className="todos-container">
       <h2>
-        {completedTodos} completed of {todos.length}
+        {completedTodos} completed of {totalTodos}
       </h2>
       {/* map over the todos array which creates a new li element for every todo */}
       <ul>
         {todos.map((todo, index) => (
-          <div className="todo-text">
+          <div className="todo-text" key={index}>
             <li
-              key={index}
               className={`todo-list ${
                 todo.completed ? "todo-list--completed" : ""
               }`}

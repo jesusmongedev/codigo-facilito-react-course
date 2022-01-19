@@ -1,4 +1,4 @@
-const { useState, useEffect } = require("react");
+import { useEffect, useState } from "react";
 
 const useLocalStorage = (itemName, initialValue) => {
   const [error, setError] = useState(false);
@@ -23,7 +23,7 @@ const useLocalStorage = (itemName, initialValue) => {
         setError(error);
       }
     }, 1000);
-  }, []);
+  }, [initialValue, itemName]);
 
   // Funcion puente entre nuestras funciones CompleteTodo, deleteTodo, localStorage y estado setItem
   const saveItem = (newItem) => {
