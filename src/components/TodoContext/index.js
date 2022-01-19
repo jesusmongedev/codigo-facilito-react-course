@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useLocalStorage } from "../../CustomHooks/useLocalStorage";
 import useRandomQuote from "../../CustomHooks/useRandomQuote";
 
@@ -9,6 +9,8 @@ function TodoProvider(props) {
   // Llamamos a nuestro customHook useLocalStorage con sus 2 valores inciales
   const { quote, author } = useRandomQuote();
   const { item: todos, saveItem: saveTodos } = useLocalStorage("TODOS_V2", []);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState("");
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
@@ -45,6 +47,26 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   };
 
+  // Open and close EditTodoForm
+  const editTodo = (todo) => {
+    setIsEditing(true);
+    setCurrentTodo({ ...todo });
+  };
+
+  // function to edit a todo item
+  const handleUpdateTodo = (id, updatedTodo) => {
+    // here we are mapping over the todos array - the idea is check if the todo.id matches the id we pass into the function
+    // if the id's match, use the second parameter to pass in the updated todo object
+    // otherwise just use old todo
+    const updatedItem = todos.map((todo) => {
+      return todo.id === id ? updatedTodo : todo;
+    });
+    // set editing to false because this function will be used inside a onSubmit function - which means the data was submited and we are no longer editing
+    setIsEditing(false);
+    // update the todos state with the updated todo
+    saveTodos(updatedItem);
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -56,6 +78,12 @@ function TodoProvider(props) {
         addTodo,
         deleteTodo,
         toggleCompleteTodo,
+        currentTodo,
+        setCurrentTodo,
+        isEditing,
+        setIsEditing,
+        editTodo,
+        handleUpdateTodo,
       }}
     >
       {props.children}

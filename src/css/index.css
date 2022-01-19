@@ -11,6 +11,7 @@ h1 {
   text-align: center;
 }
 main {
+  max-width: 600px;
   padding: 0 14px;
 }
 

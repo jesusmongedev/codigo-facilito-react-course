@@ -1,11 +1,16 @@
-import React from "react";
-
 const EditTodoForm = ({
   currentTodo,
+  setCurrentTodo,
   setIsEditing,
-  onEditInputChange,
-  onEditFormSubmit,
+  onUpdateTodo,
 }) => {
+  const onEditInputChange = (e) => {
+    setCurrentTodo({ ...currentTodo, text: e.target.value.toUpperCase() });
+  };
+  const onEditFormSubmit = (e) => {
+    e.preventDefault();
+    onUpdateTodo(currentTodo.id, currentTodo);
+  };
   return (
     <div>
       <form onSubmit={onEditFormSubmit}>
