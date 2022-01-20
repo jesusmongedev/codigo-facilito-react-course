@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TodoContext } from "../TodoContext";
+import FlipMove from "react-flip-move";
 import "./styles.css";
 
 const TodoList = () => {
@@ -18,7 +19,7 @@ const TodoList = () => {
         {completedTodos} completed of {totalTodos}
       </h2>
       {/* map over the todos array which creates a new li element for every todo */}
-      <ul>
+      <FlipMove typeName="ul">
         {todos.map((todo, index) => (
           <div className="todo-text" key={index}>
             <li
@@ -39,7 +40,7 @@ const TodoList = () => {
             </div>
           </div>
         ))}
-      </ul>
+      </FlipMove>
     </div>
   );
 };

@@ -26,6 +26,9 @@ ul {
   color: green;
   text-decoration: line-through;
 }
+.todo-actions {
+  margin-left: 1em;
+}
 .todo-actions span {
   cursor: pointer;
 }
