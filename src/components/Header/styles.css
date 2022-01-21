@@ -1,8 +1,9 @@
 blockquote {
   margin: 1em 0;
   padding: 0.8em 0.8em 0.8em 1em;
-  background-color: #f1f1f1;
-  border-left: 3px solid #2c8898;
+  background-color: var(--bg-grey-300);
+  border-radius: var(--br);
+  border-left: var(--border-quote);
   font-size: 0.75rem;
   text-align: left;
 }

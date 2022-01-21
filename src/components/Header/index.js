@@ -1,9 +1,9 @@
-import "./styles.css";
-import { TodoContext } from "../TodoContext";
-import { useContext } from "react";
+import './styles.css'
+import { TodoContext } from '../TodoContext'
+import { useContext } from 'react'
 
 const Header = () => {
-  const { quote, author } = useContext(TodoContext);
+  const { quote, author } = useContext(TodoContext)
   return (
     <header>
       <blockquote>
@@ -11,7 +11,7 @@ const Header = () => {
         <h3> {author} </h3>
       </blockquote>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,12 +1,25 @@
+:root {
+  --bg-white: rgba(255, 255, 255, 0.1);
+  --bg-grey-100: rgba(255, 255, 255, 0.15);
+  --bg-grey-200: rgba(255, 255, 255, 0.2);
+  --bg-grey-300: rgba(255, 255, 255, 0.25);
+  --br: 5px;
+  --border: 1px solid rgba(255, 255, 255, 0.5);
+  --border-quote: 3px solid rgba(255, 255, 255, 0.5);
+}
+
 body {
-  background: url("https://i.postimg.cc/cCYGP4Tc/forest.jpg");
+  /* background: url('https://i.postimg.cc/cCYGP4Tc/forest.jpg'); */
+  /* background: url('https://i.postimg.cc/Hn8V64wV/david-schultz.jpg'); */
+  /* background: url('https://i.postimg.cc/T2B9ftHN/jordan.jpg'); */
+  background: url('https://i.postimg.cc/65Rh3CkW/lukas.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
-  color: rgb(41, 41, 41);
   margin: 0 0.5em;
   height: 100vh;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  /* color: #f2f2f2; */
 }
 
 h1 {
@@ -20,4 +33,24 @@ main {
 input,
 button {
   padding: 0.25em 0.5em;
+  border: none;
+  border-radius: var(--br);
+}
+input {
+  background-color: var(--bg-grey-100);
+  outline: none;
+}
+input:focus {
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.09);
+}
+input::placeholder {
+  color: grey;
+}
+button {
+  cursor: pointer;
+  background-color: var(--bg-grey-200);
+  font-weight: bolder;
+}
+button:hover {
+  background-color: var(--bg-grey-300);
 }
