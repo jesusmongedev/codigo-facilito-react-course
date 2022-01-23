@@ -2,16 +2,28 @@
   text-align: center;
 }
 ul {
+  overflow-y: scroll;
+  height: 21vh;
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 0;
 }
+ul::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (min-width: 40em) {
+  ul {
+    height: 31vh;
+  }
+}
 .todo-text {
+  background-color: var(--bg-grey-400);
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
+  padding: 0.5em;
 }
 .todo-text input {
   cursor: pointer;
@@ -23,12 +35,18 @@ ul {
   gap: 0.3em;
 }
 .todo-list--completed {
-  color: green;
+  color: gray;
   text-decoration: line-through;
 }
 .todo-actions {
   margin-left: 1em;
 }
-.todo-actions span {
+.todo-actions .todo-actions-button:first-child {
+  margin-right: 0.25em;
+}
+.todo-actions .todo-actions-button {
   cursor: pointer;
+}
+.todo-actions .todo-actions-button:hover {
+  color: gray;
 }

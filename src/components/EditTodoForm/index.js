@@ -5,16 +5,16 @@ const EditTodoForm = ({
   onUpdateTodo,
 }) => {
   const onEditInputChange = (e) => {
-    setCurrentTodo({ ...currentTodo, text: e.target.value.toUpperCase() });
-  };
+    setCurrentTodo({ ...currentTodo, text: e.target.value.toUpperCase() })
+  }
   const onEditFormSubmit = (e) => {
-    e.preventDefault();
-    onUpdateTodo(currentTodo.id, currentTodo);
-  };
+    e.preventDefault()
+    onUpdateTodo(currentTodo.id, currentTodo)
+  }
   return (
     <div>
       <form onSubmit={onEditFormSubmit}>
-        <h2>Edit todo</h2>
+        <h1>Edit todo</h1>
         <label htmlFor="editTodo">Edit todo:</label>
         <input
           name="editTodo"
@@ -27,7 +27,7 @@ const EditTodoForm = ({
         <button onClick={() => setIsEditing(false)}>Cancel</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default EditTodoForm;
+export default EditTodoForm
