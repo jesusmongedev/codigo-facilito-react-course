@@ -73,6 +73,7 @@ function TodoProvider(props) {
         quote,
         author,
         todos,
+        saveTodos,
         completedTodos,
         totalTodos,
         addTodo,

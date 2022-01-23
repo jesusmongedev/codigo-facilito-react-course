@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import { TodoContext } from '../TodoContext'
 // import FlipMove from 'react-flip-move'
 import './styles.css'
-import { MdDelete, MdModeEdit } from 'react-icons/md'
+import { MdDelete, MdModeEdit, MdDragHandle } from 'react-icons/md'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const TodoList = () => {
   const {
     todos,
+    saveTodos,
     deleteTodo,
     toggleCompleteTodo,
     completedTodos,
@@ -18,8 +19,13 @@ const TodoList = () => {
   return (
     <div className="todos-container">
       <DragDropContext
-        onDragEnd={(...props) => {
-          console.log(props)
+        onDragEnd={(param) => {
+          const srcI = param.source.index
+          const desI = param.destination?.index
+          if (desI) {
+            todos.splice(desI, 0, todos.splice(srcI, 1)[0])
+            saveTodos(todos)
+          }
         }}
       >
         <h2>
@@ -46,7 +52,9 @@ const TodoList = () => {
                           todo.completed ? 'todo-list--completed' : ''
                         }`}
                       >
-                        <span {...provided.dragHandleProps}>🐲</span>
+                        <span {...provided.dragHandleProps}>
+                          <MdDragHandle />
+                        </span>
                         <input
                           type="checkbox"
                           onClick={() => toggleCompleteTodo(todo.text)}

@@ -2,21 +2,21 @@
   text-align: center;
 }
 ul {
-  overflow-y: scroll;
-  height: 21vh;
+  /* overflow-y: scroll; */
+  /* height: 21vh; */
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 0;
 }
-ul::-webkit-scrollbar {
+/* ul::-webkit-scrollbar {
   display: none;
-}
-@media screen and (min-width: 40em) {
+} */
+/* @media screen and (min-width: 40em) {
   ul {
     height: 31vh;
   }
-}
+} */
 .todo-text {
   background-color: var(--bg-grey-400);
   display: flex;

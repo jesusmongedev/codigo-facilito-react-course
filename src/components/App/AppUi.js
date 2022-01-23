@@ -19,6 +19,7 @@ const App = () => {
     <main>
       <Header />
       {/* We need to conditionally render different inputs based on if we are in editing mode */}
+
       <div className="todo-container">
         {isEditing ? (
           <EditTodoForm

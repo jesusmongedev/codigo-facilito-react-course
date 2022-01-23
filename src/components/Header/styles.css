@@ -4,7 +4,7 @@ blockquote {
   background-color: var(--bg-grey-300);
   border-radius: var(--br);
   border-left: var(--border-quote);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-align: left;
 }
 blockquote h3 {
