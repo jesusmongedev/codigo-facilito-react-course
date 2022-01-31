@@ -7,12 +7,22 @@
   --br: 5px;
   --border: 1px solid rgba(255, 255, 255, 0.5);
   --border-quote: 3px solid rgba(255, 255, 255, 0.5);
+  --font-quote: 0.6rem;
+  --font-title: 1.5rem;
+  --font-subtitle: 1rem;
+  --font-list: 0.75rem;
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+    --font-quote: 0.7rem;
+    --font-title: 1.75rem;
+    --font-subtitle: 1.25rem;
+    --font-list: 0.9rem;
+  }
 }
 
 body {
-  /* background: url('https://i.postimg.cc/cCYGP4Tc/forest.jpg'); */
-  /* background: url('https://i.postimg.cc/Hn8V64wV/david-schultz.jpg'); */
-  /* background: url('https://i.postimg.cc/T2B9ftHN/jordan.jpg'); */
   background: url('https://i.postimg.cc/65Rh3CkW/lukas.jpg');
   background-size: cover;
   display: flex;
