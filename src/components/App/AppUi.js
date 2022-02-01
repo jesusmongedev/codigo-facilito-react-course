@@ -1,18 +1,23 @@
 import { useContext } from 'react'
 import AddTodoForm from '../AddTodoForm/index'
+import CreateTodo from '../CreateTodo'
 import EditTodoForm from '../EditTodoForm'
 import Header from '../Header/index'
+import LoadingTodo from '../LoadingTodo'
 import { TodoContext } from '../TodoContext'
 import TodoList from '../TodoList'
 import './styles.css'
 
 const App = () => {
   const {
+    todos,
     isEditing,
     setIsEditing,
     currentTodo,
     setCurrentTodo,
     handleUpdateTodo,
+    loading,
+    error,
   } = useContext(TodoContext)
 
   return (
@@ -31,7 +36,11 @@ const App = () => {
         ) : (
           <AddTodoForm />
         )}
-        <TodoList />
+        {/* States: loading, error, Create Todos Screen */}
+        {error && <p>Error loading todos...</p>}
+        {loading && new Array(3).fill().map((_, i) => <LoadingTodo key={i} />)}
+        {!loading && !todos.length && <CreateTodo />}
+        {<TodoList />}
       </div>
     </main>
   )

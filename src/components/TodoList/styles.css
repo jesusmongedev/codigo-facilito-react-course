@@ -4,7 +4,7 @@
 }
 ul {
   overflow-y: scroll;
-  height: 21vh;
+  height: 22vh;
   display: flex;
   flex-direction: column;
   gap: 1em;

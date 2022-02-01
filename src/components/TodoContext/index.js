@@ -8,7 +8,12 @@ const TodoContext = createContext('null')
 function TodoProvider(props) {
   // Llamamos a nuestro customHook useLocalStorage con sus 2 valores inciales
   const { quote, author } = useRandomQuote()
-  const { item: todos, saveItem: saveTodos } = useLocalStorage('TODOS_V2', [])
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V2', [])
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState('')
 
@@ -85,6 +90,8 @@ function TodoProvider(props) {
         setIsEditing,
         editTodo,
         handleUpdateTodo,
+        loading,
+        error,
       }}
     >
       {props.children}
