@@ -22,6 +22,7 @@ const EditTodoForm = ({
           placeholder="Edit todo..."
           value={currentTodo.text}
           onChange={onEditInputChange}
+          autoFocus
         />
         <button type="submit">Update</button>
         <button onClick={() => setIsEditing(false)}>Cancel</button>

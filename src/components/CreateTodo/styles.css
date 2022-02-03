@@ -8,13 +8,8 @@ figure {
   text-align: center;
 }
 img {
-  max-inline-size: 60%;
+  max-inline-size: 80%;
 }
 figcaption {
   font-weight: 700;
-}
-@media screen and (min-width: 425px) {
-  .createTodo {
-    min-width: 420px;
-  }
 }

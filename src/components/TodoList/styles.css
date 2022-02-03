@@ -15,7 +15,7 @@ ul::-webkit-scrollbar {
 }
 @media screen and (min-width: 40em) {
   ul {
-    height: 31vh;
+    height: 35vh;
   }
 }
 .todo-text {

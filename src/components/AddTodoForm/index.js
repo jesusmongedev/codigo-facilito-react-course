@@ -1,23 +1,23 @@
-import { useContext, useState } from "react";
-import { TodoContext } from "../TodoContext";
-import "./styles.css";
+import { useContext, useState } from 'react'
+import { TodoContext } from '../TodoContext'
+import './styles.css'
 
 const AddTodoForm = () => {
-  const { addTodo } = useContext(TodoContext);
+  const { addTodo } = useContext(TodoContext)
   // need state to keep track of the value in the input
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('')
 
   // function to get the value of the input and set the new state
   const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
+    setInputValue(e.target.value)
+  }
 
   // function to add a new Todo
   const onAddFormSubmit = (e) => {
-    e.preventDefault();
-    addTodo(inputValue);
-    setInputValue("");
-  };
+    e.preventDefault()
+    addTodo(inputValue)
+    setInputValue('')
+  }
 
   return (
     <form>
@@ -29,12 +29,13 @@ const AddTodoForm = () => {
         placeholder="What needs to be done ...?"
         value={inputValue}
         onChange={handleChange}
+        autoFocus
       />
       <button type="submit" onClick={onAddFormSubmit}>
         Add
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default AddTodoForm;
+export default AddTodoForm
