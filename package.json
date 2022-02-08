@@ -1,6 +1,6 @@
 {
   "homepage": "http://jesusmongedev.github.io/todo-list-app",
-  "name": "react-pro",
+  "name": "todo-list-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
