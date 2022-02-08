@@ -1,34 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 const useRandomQuote = () => {
   //Fetching Quote
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
+  const [quote, setQuote] = useState('')
+  const [author, setAuthor] = useState('')
   // Get a Ramdom Quote to render
   useEffect(() => {
     const getRandomIndex = (min, max) =>
-      Math.floor(Math.random() * (max - min) + min);
+      Math.floor(Math.random() * (max - min) + min)
 
-    const random = getRandomIndex(0, 1644);
-    console.log(random);
+    const random = getRandomIndex(0, 1644)
 
     const fetchQuote = async () =>
-      await fetch("https://type.fit/api/quotes")
+      await fetch('https://type.fit/api/quotes')
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          setQuote(data[random].text);
-          setAuthor(data[random].author);
-        });
-    fetchQuote();
-  }, []);
+          setQuote(data[random].text)
+          setAuthor(data[random].author)
+        })
+    fetchQuote()
+  }, [])
   return {
     quote,
     author,
-  };
-};
+  }
+}
 
-export default useRandomQuote;
+export default useRandomQuote
 
 // const useRandomJoke = (firstName, lastName) => {
 //   //useEffect to fetch a random joke
